@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-g">
+    <meta name="viewport" contents="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" contents="ie-edge">
+    <!-- Jinja notation -->
+    <!-- Double brackets indicates printing the output as a string -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Brackets Percent indicates printing the output? -->
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>

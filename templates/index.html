@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-    <meta charset="UTF-g">
-    <meta name="viewport" contents="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" contents="ie-edge">
-    <title>Document</title>
-</head>
-<body>
-    Hello World! 2
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Master Tut</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <ht1>Task Master Tut</h1>
+    {% if tasks|length < 1 %}
+    <h4>There are no tasks. Create one blow</h4>
+    {% else %}
+    <table>
+        <tr> <!-- Table Row -->
+            <th>Task</th> <!-- Table Header, columns -->
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+{% endblock %}
